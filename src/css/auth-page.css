@@ -1,0 +1,141 @@
+/*login and registration page css*/
+
+.auth_page{
+	width: 100%;
+	height: auto;
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+}
+.auth_img{
+	flex-basis: 50%;
+	text-align: right;
+}
+.auth_img img{
+	max-width: 100%;
+}
+.auth_form_wraper{
+	flex-basis: 50%;
+	padding: 10px;
+}
+.auth_form_wraper form{
+	padding: 20px;
+	width: 400px;
+	height: auto;
+	max-width: 100%;
+}
+.auth_form_wraper form h3{
+	font-size: 26px;
+	font-weight: 400;
+	color: #393a4f;
+	margin-bottom: 5px;
+}
+.auth_form_wraper form h5{
+	font-size: 14px;
+	margin: 10px 0px;
+	color: #a2a5b9;
+    font-weight: 400;
+}
+.auth_form_field{
+    padding: 7px 0px;
+}
+.auth_form_field label{
+	font-size: 15px;
+	color: #393a4f;
+}
+.auth_form_field input{
+	width: 100%;
+	height: auto;
+	margin-top: 5px;
+	padding: 10px;
+	border: none;
+	outline: none;
+	border: 1px solid rgba(0,0,0,0.1);
+	font-size: 14px;
+	font-family: 'Public Sans', Sans-serif;
+	border-radius: 5px;
+}
+.auth_form_field input:focus{
+	border: 1px solid rgba(61,112,178,0.5);
+}
+.auth_form_field input::placeholder{
+	color: rgba(0,0,0,0.3);
+	font-weight: 400;
+}
+.auth_form_field_action{
+	display: flex;
+	align-self: center;
+	padding: 10px 0px;
+	justify-content: space-between;
+	color: #999;
+	font-weight: 400;
+}
+.auth_remember_me{
+	display: flex;
+	align-items: center;
+}
+.auth_remember_me span{
+	font-size: 14px;
+	margin-left: 4px;
+}
+.auth_remember_me span:hover{
+	cursor: pointer;
+}
+.auth_remember_me input{
+	border: none;
+	outline: none;
+	cursor: pointer;
+}
+.auth_forgot_password span{
+	font-size: 14px;
+}
+.auth_forgot_password span a{
+	text-decoration: none;
+	color: inherit;
+}
+.auth_forgot_password span a:hover{
+	color: #3d70b2;
+	transition: 0.2s ease-in-out;
+}
+.auth_form_field button{
+	padding: 10px;
+	text-align: center;
+	width: 100%;
+	border: none;
+	outline: none;
+	background-color: #3d70b2;
+	font-size: 14px;
+	font-family: 'Public Sans',Sans-serif;
+	color: #ffffff;
+	cursor: pointer;
+}
+.auth_form_field button:hover{
+	box-shadow: 0 0 40px rgba(255,255,255,0.4);
+	background-color: #628abf;
+	transition: 0.2s ease-in-out;
+}
+
+.auth_form_field span{
+	font-size: 15px;
+	color: #393a4f;
+}
+.auth_form_field a{
+	color: #3d70b2;
+	text-decoration: none;
+}
+
+/*responsive form design*/
+
+@media(max-width: 800px){
+   .auth_img{
+   	display: none;
+   }
+   .auth_form_wraper{
+   	flex-basis: 100%;
+   	display: flex;
+   	justify-content: center;
+   	align-items: center;
+   }
+}
+
+/*end login and registration page css*/
