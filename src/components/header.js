@@ -1,4 +1,4 @@
-import {useContext} from 'react';
+import {useContext,useEffect} from 'react';
 import {Link,useHistory} from 'react-router-dom';
 import {BsFillChatDotsFill} from 'react-icons/bs';
 import {GiHouse} from 'react-icons/gi';
@@ -13,10 +13,19 @@ import {FiLogOut} from 'react-icons/fi';
 import logo from '../images/logo.png';
 import AuthContext from '../context/authcontext';
 
-const Header=()=>{
+const Header=(props)=>{
 
 const {setCurrentUser}=useContext(AuthContext);
 const history=useHistory();
+
+//initial state
+
+useEffect(()=>{
+
+const nav_links=document.querySelectorAll('.nav_menu ul li');
+nav_links[props.page].classList.add('active');
+
+},[props.page]);
 
 const ToggleNavSetting=()=>{
   document.querySelector('.nav_action_setting').classList.toggle('active');
@@ -54,7 +63,7 @@ return(
 
    <div className="nav_menu">
    	<ul>
-   		<li className="active"><Link to="/"><GiHouse/></Link></li>
+   		<li><Link to="/"><GiHouse/></Link></li>
    		<li><Link to="/friendlist"><FaUserFriends/></Link></li>
    		<li><Link to="/"><BsFillChatDotsFill/></Link></li>
    		<li><Link to="/shoplist"><MdStore/></Link></li>

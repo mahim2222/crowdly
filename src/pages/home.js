@@ -44,7 +44,7 @@ return(
 <PostForm hide={setPostForm} PostList={update_post_list} />:null
 }
 
-<Header/>
+<Header page={0} />
 
 <div id="home_wraper">
 

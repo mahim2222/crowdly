@@ -25,6 +25,11 @@ return(
 </div>
 
 <div className="post_content">
+
+<div className="post_text">
+{props.content}
+</div>
+
 {
 props.ismedia && props.type==='post'?
 <div className="post_image_content">

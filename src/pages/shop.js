@@ -39,7 +39,7 @@ const Toggle_navigate=(e)=>{
 
 return(
 <>
-<Header/>
+<Header page={3}/>
 
 <div id="shop_wraper">
 

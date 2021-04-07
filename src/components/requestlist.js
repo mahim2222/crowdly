@@ -1,6 +1,6 @@
 import pic from '../images/pic/pic1.jpg';
 
-const Friend=()=>{
+const Requestlist=()=>{
 return(
 <>
 <div className="friendlist">
@@ -15,6 +15,7 @@ return(
 <div className="friendlist_user_status"><div className="user_online"></div> online</div>
 </div>
 
+Requestlist
 
 </div>
 
@@ -23,4 +24,4 @@ return(
 )
 }
 
-export default Friend;
+export default Requestlist;

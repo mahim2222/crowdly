@@ -470,7 +470,7 @@
 }
 
 /*post image content*/
-.pic_text{
+.post_text{
 	padding: 10px;
 	color: var(--default-text);
 }
@@ -489,71 +489,161 @@
 /*end post design css*/
 
 /*friend list css*/
-.friend_list_wraper{
+.friendlist_tabs{
 	width: 100%;
-	height: 90vh;
-	overflow: auto;
-}
-#friend_search{
-	width: 300px;
-	margin: 10px auto;
+	max-width: 340px;
 	padding: 10px;
+	margin: 0px auto;
 	background-color: var(--nav-bg);
+	margin-top: 5px;
 	border: 1px solid var(--nav-border);
+	border-radius: 5px;
+	position: relative;
 }
-#friend_search form{
+.friendlist_tabs ul{
+	list-style: none;
 	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
-#friend_search form input{
-	width: 85%;
-	height: 32px;
-	padding: 10px;
-	border: 1px solid var(--border-one);
-	outline: none;
-	font-size: 14px;
-}
-#friend_search form button{
-	width: 15%;
-	border: 1px solid var(--border-one);
+.friendlist_tabs ul li{
+	width: 30px;
+	height: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 5px;
 	cursor: pointer;
-	font-size: 16px;
-	outline: none;
-	background-color: #2196F3;
-	color: #f2f2f2;
 }
-.friend_list{
-	width: 300px;
-	margin:10px auto;
-	padding: 10px;
+.friendlist_tabs ul li svg{
+	color:var(--nav-icon);
+	font-size: 18px;
+}
+.friendlist_tabs ul li.active{
+	background-color: #2196f3;
+}
+.friendlist_tabs ul li.active svg{
+	color: #ffffff;
+}
+.friendlist_tabs ul li:nth-child(4){
+	background-color: var(--primary-icon-hover);
+}
+.friendlist_tabs ul li:nth-child(4):hover{
+	background-color: var(--border-one);
+}
+
+.friendlist_search{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 	background-color: var(--nav-bg);
 	border-radius: 5px;
-	border: 1px solid var(--nav-border);
 	display: flex;
+	align-items: center;
 }
-.friend_list .friend_list_info{
-	padding:5px;
+.friendlist_search_input{
+	flex-basis: 90%;
 }
-.friend_list .friend_list_info h6{
-	font-size: 14px;
+.friendlist_search_input input{
+	width: 100%;
+	border: none;
+	outline: none;
+	padding: 7px 10px;
+	font-size: 15px;
+	font-family: 'Public sans',sans-serif;
+	background-color: transparent;
 	color: var(--default-text);
 }
-.friend_list .friend_list_info .friend_list_button{
+.friendlist_search_closer{
+	flex-basis: 10%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-left: 1px solid var(--border-one);
+	cursor: pointer;
+	font-size: 18px;
+	color: var(--nav-icon);
+}
+
+/*friend list tabs*/
+
+
+.friendlist_wraper{
+	width: 100%;
+	max-width: 360px;
+	margin: 0px auto;
+	padding: 5px 10px;
+}
+.friendlist{
+	width: 100%;
+	height: auto;
+	padding: 10px;
+	background-color: var(--nav-bg);
+	border:1px solid var(--nav-border);
+	border-radius: 5px;
 	display: flex;
 }
-.friend_list .friend_list_info .friend_list_button a{
-	font-size: 14px;
-	margin-right: 5px;
-	margin-top: 5px;
-	padding: 5px;
-	background-color: #2196F3;
-	color: #f2f2f2;
-	text-decoration: none;
-	border-radius: 5px;
+.friendlist .friendlist_pic{
+	flex-basis: 20%;
 }
-.friend_list img{
+.friendlist .friendlist_pic img{
 	width: 50px;
 	height: 50px;
 	border-radius: 50%;
+}
+.friendlist .friendlist_user_info span{
+    font-size: 16px;
+    color: var(--default-text);
+}
+.friendlist .friendlist_user_status{
+	display: flex;
+	align-items: center;
+	color: var(--secondary-text);
+}
+.friendlist .friendlist_user_status .user_online{
+	width: 12px;
+	height: 12px;
+	background-color: #00BCD4;
+	border-radius: 50%;
+	margin-right: 3px;
+}
+.friendlist_user{
+	flex-basis: 80%;
+}
+.friendlist_user_info{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 3px 0px;
+	margin:5px 0px;
+}
+.friendlist_user_button{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.friendlist_user_button a{
+	padding: 6px 10px;
+	background-color: #2196f3;
+	color: #ffffff;
+	font-size: 14px;
+	width: 40%;
+	text-align: center;
+	text-decoration: none;
+	border-radius: 5px;
+}
+.friendlist_user_button button{
+	padding: 6px 10px;
+	border: none;
+	outline: none;
+	width: 46%;
+	cursor: pointer;
+	border-radius: 5px;
+	background-color: #2196f3;
+	color: #ffffff;
+	font-family: "Public sans",sans-serif;
 }
 
 /*friend list css end*/

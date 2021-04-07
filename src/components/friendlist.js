@@ -1,6 +1,7 @@
 import pic from '../images/pic/pic1.jpg';
+import {Link} from 'react-router-dom';
 
-const Friend=()=>{
+const Friendlist=()=>{
 return(
 <>
 <div className="friendlist">
@@ -15,6 +16,9 @@ return(
 <div className="friendlist_user_status"><div className="user_online"></div> online</div>
 </div>
 
+<div className="friendlist_user_button">
+<Link to="">Profile</Link><button>Add Friend</button>
+</div>
 
 </div>
 
@@ -23,4 +27,4 @@ return(
 )
 }
 
-export default Friend;
+export default Friendlist;
