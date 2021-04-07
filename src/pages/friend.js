@@ -43,7 +43,7 @@ all_tabs[0].classList.add('active');
 setTab('users');
 
 const uid=localStorage.getItem('auth-id');
-const all_users=await AxiosConfig.post('http://localhost:4000/friends',{me:uid});
+const all_users=await AxiosConfig.post('/friends',{me:uid});
 setUsers(all_users.data)
 console.log(all_users.data)
 
