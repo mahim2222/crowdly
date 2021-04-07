@@ -1,3 +1,3 @@
-const BaseURL="http://localhost:4000";
+const BaseURL="https://mmmstorehuh.herokuapp.com";
 
 export default BaseURL;

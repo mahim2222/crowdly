@@ -1,8 +1,10 @@
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 import Header from '../components/header';
 import Friendlist from '../components/friendlist';
 import Friend from '../components/friends';
 import Requestlist from '../components/requestlist';
+import AxiosConfig from '../helpers/axiosconfig';
+import BaseURL from '../helpers/baseurl';
 import {HiUserGroup} from 'react-icons/hi';
 import {MdGroup} from 'react-icons/md';
 import {MdPersonAdd} from 'react-icons/md';
@@ -13,9 +15,23 @@ const FriendPage=()=>{
 
 const [showsearch,setShowsearch]=useState(false);
 const [tab,setTab]=useState('users');
+const [Users,setUsers]=useState([]);
+
+useEffect(()=>{
+
+async function get_users(){
+
+const uid=localStorage.getItem('auth-id');
+const all_users=await AxiosConfig.post('http://localhost:4000/friends',{me:uid});
+setUsers(all_users.data)
+
+}
+get_users();
+
+},[])
 
 //show users
-function show_users(e){
+async function show_users(e){
 
 try{
 
@@ -25,6 +41,11 @@ all_tabs.forEach(tab=>{
 })
 all_tabs[0].classList.add('active');
 setTab('users');
+
+const uid=localStorage.getItem('auth-id');
+const all_users=await AxiosConfig.post('http://localhost:4000/friends',{me:uid});
+setUsers(all_users.data)
+console.log(all_users.data)
 
 }catch(err){
 	console.log(err)
@@ -94,7 +115,13 @@ showsearch?
 {
 tab==='users'?
 <div className="friendlist_wraper">
-<Friendlist/>
+
+{
+Users.map(user=>{
+return <Friendlist key={user._id} name={user.name} pic={BaseURL+'/users/pic/'+user.avatar}/>
+})
+}
+
 </div>:null	
 }
 

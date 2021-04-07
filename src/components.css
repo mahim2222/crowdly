@@ -584,6 +584,7 @@
 	border:1px solid var(--nav-border);
 	border-radius: 5px;
 	display: flex;
+	margin: 10px 0px;
 }
 .friendlist .friendlist_pic{
 	flex-basis: 20%;
