@@ -1,10 +1,11 @@
-import {useState,useEffect} from 'react';
+import {useState,useEffect,useContext} from 'react';
 import Header from '../components/header';
 import Friendlist from '../components/friendlist';
 import Friend from '../components/friends';
 import Requestlist from '../components/requestlist';
 import AxiosConfig from '../helpers/axiosconfig';
 import BaseURL from '../helpers/baseurl';
+import AuthContext from '../context/authcontext';
 import {HiUserGroup} from 'react-icons/hi';
 import {MdGroup} from 'react-icons/md';
 import {MdPersonAdd} from 'react-icons/md';
@@ -14,6 +15,8 @@ import {MdClose} from 'react-icons/md';
 const FriendPage=()=>{
 
 const [showsearch,setShowsearch]=useState(false);
+const [loading,setLoading]=useState(false);
+const {currentUser}=useContext(AuthContext);
 const [tab,setTab]=useState('users');
 const [Users,setUsers]=useState([]);
 
@@ -34,7 +37,7 @@ get_users();
 async function show_users(e){
 
 try{
-
+setLoading(true);
 let all_tabs=document.querySelectorAll('.friendlist_tabs_list');
 all_tabs.forEach(tab=>{
 	tab.classList.remove('active');
@@ -42,11 +45,9 @@ all_tabs.forEach(tab=>{
 all_tabs[0].classList.add('active');
 setTab('users');
 
-const uid=localStorage.getItem('auth-id');
-const all_users=await AxiosConfig.post('/friends',{me:uid});
+const all_users=await AxiosConfig.post('/friends',{me:currentUser.id});
 setUsers(all_users.data)
-console.log(all_users.data)
-
+setLoading(false);
 }catch(err){
 	console.log(err)
 }
@@ -54,10 +55,10 @@ console.log(all_users.data)
 }
 
 //show friend requests
-function show_firends(){
+async function show_firends(){
 
 try{
-
+setLoading(true)
 let all_tabs=document.querySelectorAll('.friendlist_tabs_list');
 all_tabs.forEach(tab=>{
 	tab.classList.remove('active');
@@ -65,6 +66,11 @@ all_tabs.forEach(tab=>{
 all_tabs[1].classList.add('active');
 setTab('friends')
 
+//get all the friends
+const token=localStorage.getItem('x-auth-token');
+const all_friend=await AxiosConfig.post('friends/allfriends',{me:currentUser.id},{headers:{'x-auth-token':token}})
+setUsers(all_friend.data);
+setLoading(false)
 }catch(err){
 	console.log(err)
 }	
@@ -73,17 +79,22 @@ setTab('friends')
 }
 
 //show requests
-function show_requests(){
+async function show_requests(){
 
 try{
-
+setLoading(true)
 let all_tabs=document.querySelectorAll('.friendlist_tabs_list');
 all_tabs.forEach(tab=>{
 	tab.classList.remove('active');
 })
 all_tabs[2].classList.add('active');
-setTab('requests')
+setTab('requests');
 
+//get all the requests
+const token=localStorage.getItem('x-auth-token');
+const all_request=await AxiosConfig.post('/friends/allrequest',{me:currentUser.id},{headers:{'x-auth-token':token}});
+setUsers(all_request.data)
+setLoading(false)
 }catch(err){
 	console.log(err)
 }	
@@ -114,28 +125,55 @@ showsearch?
 
 {
 tab==='users'?
+<div>
+{
+loading===false?
 <div className="friendlist_wraper">
-
 {
 Users.map(user=>{
-return <Friendlist key={user._id} name={user.name} pic={BaseURL+'/users/pic/'+user.avatar}/>
+return <Friendlist key={user._id}
+        name={user.name}
+        pic={BaseURL+'/users/pic/'+user.avatar}
+        user_id={user._id}
+        />
 })
 }
-
-</div>:null	
+</div>:<div className="friendlist_wraper">Loading</div>	
 }
+</div>:null
+}
+
 
 {
 tab==='friends'?
+<div>
+{
+loading===false?
 <div className="friendlist_wraper">
-<Friend/>
-</div>:null	
+{
+Users.map(friend=>{
+return <Friend key={friend._id} user_id={friend.following}/>
+})
 }
+</div>:<div className="friendlist_wraper">Loading</div>	
+}
+</div>:null
+}
+
 
 {
 tab==='requests'?
+<div>
+{
+loading===false?
 <div className="friendlist_wraper">
-<Requestlist/>
+{
+Users.map(request=>{
+return <Requestlist key={request._id} user_id={request.following}/>
+})	
+}
+</div>:<div className="friendlist_wraper">Loading</div>	
+}
 </div>:null	
 }
 

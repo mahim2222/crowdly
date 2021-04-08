@@ -20,7 +20,6 @@ async function get_posts(){
 
 const all_posts=await AxiosConfig.get('/posts/all');
 setAllPosts(all_posts.data);
-console.log(all_posts.data)
 
 }
 get_posts();
