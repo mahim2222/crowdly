@@ -10,11 +10,10 @@ const [userinfo,setUserinfo]=useState([]);
 useEffect(()=>{
 
 async function fetch_user(){
-
-try{
 const token=localStorage.getItem('x-auth-token');
-const all_info=await AxiosConfig.post('/friends/friendinfo',{uid:props.user_id},{headers:{'x-auth-token':token}})
-setUserinfo(all_info.data)
+try{
+const friend_info=await AxiosConfig.post('/friends/friendinfo',{uid:props.user_id},{headers:{'x-auth-token':token}})
+setUserinfo(friend_info.data)
 setLoading(false)
 }catch(err){
 console.log(err)	

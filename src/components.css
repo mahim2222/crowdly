@@ -750,66 +750,42 @@
     color: var(--default-text);
 }
 
+/*follwer following tab design */
+
+.ff_tab{
+	width: 100%;
+	max-width: 340px;
+	padding: 5px;
+}
+.ff_tab button{
+	width: 50%;
+	padding: 5px 10px;
+	border: none;
+	outline: none;
+	border: 1px solid var(--nav-border);
+	font-size: 14px;
+	font-family: 'Public sans',sans-serif;
+	cursor: pointer;
+	background-color: var(--white);
+	color: var(--default-text);
+}
+.ff_tab button.active{
+	background-color: #2196f3;
+	color: #ffffff;
+}
+
 /*friend list css end*/
 
-/*shop list css*/
-.shop_list{
-	width: 300px;
-	margin: 10px auto;
-	padding: 10px;
-	background-color: var(--nav-bg);
-	border-radius: 5px;
-	border: 1px solid var(--nav-border);
-}
-.shop_list a{
-	color: var(--default-text);
-	text-decoration: none;
-}
-.shop_list img{
-	max-width: 100%;
-}
+/*chat list css */
 
-.shop_list .shop_list_title h5{
-	font-size: 20px;
-	margin: 10px 0px;
-	color: var(--default-text);
-}
-.shop_list .shop_list_title p{
-	font-size: 16px;
-	color: var(--default-text);
-	margin: 10px 0px;
-}
-
-/*end shop list css*/
-
-/*product components css*/
-.product{
-	border: 2px solid var(--nav-border);
-	background-color: var(--nav-bg);
-}
-.product .product_img img{
+.chatlist{
 	width: 100%;
-}
-.product .product_content{
+	height: auto;
 	padding: 10px;
-}
-.product .product_content span{
-	font-size: 16px;
-	color: var(--default-text);
-	font-weight: bold;
-}
-.product .product_content ul{
-	margin: 15px 20px;
-	padding: 0;
-}
-.product .product_content ul li{
-	font-size: 12px;
-    font-weight: 500;
-    line-height: 18px;
-    color: var(--p-text);
-    margin-bottom: 5px;
-    list-style: disc;
-    font-family: sans-serif;
+	background-color: var(--nav-bg);
+	border: 1px solid var(--nav-border);
+	border-radius: 5px;
 }
 
-/*end product components css*/
+/*end chat list css*/
+

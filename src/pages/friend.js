@@ -18,6 +18,7 @@ const [showsearch,setShowsearch]=useState(false);
 const [loading,setLoading]=useState(false);
 const {currentUser}=useContext(AuthContext);
 const [tab,setTab]=useState('users');
+const [ff,setff]=useState('Follower');
 const [Users,setUsers]=useState([]);
 
 useEffect(()=>{
@@ -68,7 +69,7 @@ setTab('friends')
 
 //get all the friends
 const token=localStorage.getItem('x-auth-token');
-const all_friend=await AxiosConfig.post('friends/allfriends',{me:currentUser.id},{headers:{'x-auth-token':token}})
+const all_friend=await AxiosConfig.post('friends/allfollower',{me:currentUser.id},{headers:{'x-auth-token':token}})
 setUsers(all_friend.data);
 setLoading(false)
 }catch(err){
@@ -98,8 +99,46 @@ setLoading(false)
 }catch(err){
 	console.log(err)
 }	
+}
+
+//get follower
+async function get_follower(){
+const all_tabs=document.querySelectorAll('.ff_tab button');
+all_tabs.forEach(tab=>{
+	tab.classList.remove('active')
+})
+all_tabs[0].classList.add('active');
+setff(all_tabs[0].innerHTML);
+
+try{
+const token=localStorage.getItem('x-auth-token');
+const all_follower=await AxiosConfig.post('/friends/allfollower',{me:currentUser.id},{headers:{'x-auth-token':token}})
+setUsers(all_follower.data)
+}catch(err){
+	console.log(err)
+}
 
 }
+
+//get following
+async function get_following(){
+const all_tabs=document.querySelectorAll('.ff_tab button');
+all_tabs.forEach(tab=>{
+	tab.classList.remove('active')
+})
+all_tabs[1].classList.add('active');
+setff(all_tabs[1].innerHTML)
+
+try{
+const token=localStorage.getItem('x-auth-token');
+const all_following=await AxiosConfig.post('/friends/allfollowing',{me:currentUser.id},{headers:{'x-auth-token':token}})
+setUsers(all_following.data);
+}catch(err){
+	console.log(err)
+}
+
+}
+
 
 return(
 <>
@@ -150,11 +189,37 @@ tab==='friends'?
 {
 loading===false?
 <div className="friendlist_wraper">
+<div className="ff_tab">
+<button className="active" onClick={get_follower}>Follower</button>
+<button onClick={get_following}>Following</button>
+</div>
+
+<div className="ff_wraper">
+
 {
-Users.map(friend=>{
-return <Friend key={friend._id} user_id={friend.following}/>
-})
+ff==='Follower'?
+<div>
+{
+Users.map(user=>{
+return <Friend key={user._id} user_id={user.following} />
+})	
 }
+</div>:null	
+}
+
+{
+ff==='Following'?
+<div>
+{
+Users.map(user=>{
+return <Friend key={user._id} user_id={user.follower}/>
+})	
+}
+</div>:null	
+}
+
+</div>
+
 </div>:<div className="friendlist_wraper">Loading</div>	
 }
 </div>:null

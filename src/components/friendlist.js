@@ -106,7 +106,7 @@ confirm?
 </div>
 
 <div className="friendlist_user_button">
-<Link to="">Profile</Link>
+<Link to="/profile">Profile</Link>
 {
 requested?
 <button className="light"

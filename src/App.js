@@ -4,6 +4,7 @@ import FrinedPage from './pages/friend';
 import ShopListPage from './pages/shoplist';
 import Shop from './pages/shop';
 import Profile from './pages/profile';
+import Chatpage from './pages/chatpage.js';
 import ViewProduct from './pages/viewproduct';
 import Login from './pages/login';
 import Register from './pages/register';
@@ -57,6 +58,7 @@ currentUser?
 <Privateroute exact path="/shoplist" component={ShopListPage} />
 <Privateroute path="/shop" component={Shop} />
 <Privateroute path="/profile" component={Profile} />
+<Privateroute path="/chatlist" component={Chatpage} />
 <Privateroute path="/viewproduct" component={ViewProduct} />
 </>:null}
 

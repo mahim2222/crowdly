@@ -65,7 +65,7 @@ return(
    	<ul>
    		<li><Link to="/"><GiHouse/></Link></li>
    		<li><Link to="/friendlist"><FaUserFriends/></Link></li>
-   		<li><Link to="/"><BsFillChatDotsFill/></Link></li>
+   		<li><Link to="/chatlist"><BsFillChatDotsFill/></Link></li>
    		<li><Link to="/shoplist"><MdStore/></Link></li>
    	</ul>
    </div>
